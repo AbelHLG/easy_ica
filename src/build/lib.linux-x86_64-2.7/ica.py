@@ -1,8 +1,25 @@
-__authors__ = [
-	'Abel Antonio Fernandez Higuera <afernandezh@facinf.uho.edu.cu>',
-	'Roberto Antonio Becerra Garcia <idertator@facinf.uho.edu.cu>',
-	'Rodolfo Valentin Garcia Bermudez <afernandezh@facinf.uho.edu.cu>'
+"""
+Independent component analysis (ICA) using maximum likelihood, square mixing matrix and no noise (Infomax).
+Source prior is assumed to be p(s)=1/pi*exp(-ln(cosh(s))). For optimization the BFGS algorithm is used.
 
+Reference:
+A. Bell and T.J. Sejnowski(1995).
+An Information-Maximization Approach to Blind Separation and Blind Deconvolution
+Neural Computation, 7:1129-1159.
+
+History:
+
+- 2002.4.1 created for Matlab by Thomas Kolenda of IMM, Technical University of Denmark.
+- 2014.6.3 ported to Python by Abel Antonio Fernandez Higuera
+                               Roberto Antonio Becerra Garcia
+                               Rodolfo Valentin Garcia Bermudez
+                               (Biomedical Data Processing Group (GPDB), University of Holguin)
+"""
+
+__authors__ = [
+    'Abel Antonio Fernandez Higuera <afernandezh@facinf.uho.edu.cu>',
+    'Roberto Antonio Becerra Garcia <idertator@facinf.uho.edu.cu>',
+    'Rodolfo Valentin Garcia Bermudez <rodolfo@facinf.uho.edu.cu>',
 ]
 
 from math import pi, e, sqrt
@@ -10,20 +27,6 @@ from math import pi, e, sqrt
 from numpy import max, min, eye, diag, var, sort, linalg, diff, float, inf, dot, isreal, any, \
     nonzero, ones, zeros, shape, array
 import numpy as np
-
-
-# Independent component analysis (ICA) using maximum likelihood, square mixing matrix and no noise (Infomax).
-# Source prior is assumed to be p(s)=1/pi*exp(-ln(cosh(s))). For optimization the BFGS algorithm is used.
-#
-# Reference:
-# A. Bell and T.J. Sejnowski(1995).
-# An Information-Maximization Approach to Blind Separation and Blind Deconvolution
-# Neural Computation, 7:1129-1159.
-#
-# History:
-#
-# - 1.4.2002 created for Matlab by Thomas Kolenda of IMM, Technical University of Denmark.
-# - Implemented en Python for Abel Antonio Fernandez Higuera, Roberto Antonio Becerra Garcia, y Rodolfo Valentin Garcia Bermudez.
 
 
 #######################################################################################
